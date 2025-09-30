@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const User = require('./models/userModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -18,7 +19,12 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log('DB connection Successful!'))
+  .then(() => {
+    console.log('DB connection Successful!');
+    User.init()
+      .then(() => console.log('Indexes are ready ✅'))
+      .catch((err) => console.error('Index error:', err));
+  })
   .catch((err) => console.error('DB connection error:', err));
 
 const port = process.env.PORT || 9000;
