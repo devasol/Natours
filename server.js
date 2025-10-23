@@ -10,7 +10,7 @@ const app = require('./app');
 //   '<PASSWORD>',
 //   process.env.DATABASE_PASSWORD,
 // );
-const DB = process.env.DATABASE_LOCAL;
+const DB = process.env.DATABASE;
 
 // mongoose.connect(DB).then(() => console.log('Database Connted Successfully!'));
 
